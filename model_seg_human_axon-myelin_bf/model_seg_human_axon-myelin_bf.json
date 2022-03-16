@@ -1,0 +1,180 @@
+{
+    "command": "train",
+    "gpu_ids": [
+        1
+    ],
+    "path_output": "output/",
+    "model_name": "model_seg_human_axon-myelin_bf",
+    "debugging": true,
+    "log_file": "log",
+    "object_detection_params": {
+        "object_detection_path": null,
+        "safety_factor": [
+            1.0,
+            1.0,
+            1.0
+        ],
+        "gpu_ids": 1,
+        "path_output": "output/"
+    },
+    "loader_parameters": {
+        "path_data": [
+            "../../wakehealth_cropping_pipeline_2/"
+        ],
+        "subject_selection": {
+            "n": [],
+            "metadata": [],
+            "value": []
+        },
+        "target_suffix": [
+            "_seg-axon-manual",
+            "_seg-myelin-manual"
+        ],
+        "extensions": [
+            ".png",
+            ".tif"
+        ],
+        "roi_params": {
+            "suffix": null,
+            "slice_filter_roi": null
+        },
+        "contrast_params": {
+            "training_validation": [
+                "BF"
+            ],
+            "testing": [
+                "BF"
+            ],
+            "balance": {}
+        },
+        "slice_filter_params": {
+            "filter_empty_mask": false,
+            "filter_empty_input": true
+        },
+        "slice_axis": "axial",
+        "multichannel": false,
+        "soft_gt": false,
+        "is_input_dropout": false,
+        "bids_config": "../../config_bids.json"
+    },
+    "split_dataset": {
+        "fname_split": "../../datasplit.joblib",
+        "random_seed": 6,
+        "split_method": "sample_id",
+        "data_testing": {
+            "data_type": null,
+            "data_value": []
+        },
+        "balance": null,
+        "train_fraction": 0.7,
+        "test_fraction": 0.1
+    },
+    "training_parameters": {
+        "batch_size": 6,
+        "loss": {
+            "name": "MultiClassDiceLoss"
+        },
+        "training_time": {
+            "num_epochs": 400,
+            "early_stopping_patience": 200,
+            "early_stopping_epsilon": 0.0001
+        },
+        "scheduler": {
+            "initial_lr": 0.002,
+            "lr_scheduler": {
+                "name": "CyclicLR",
+                "base_lr": 1e-05,
+                "max_lr": 0.005
+            }
+        },
+        "balance_samples": {
+            "applied": false,
+            "type": "gt"
+        },
+        "mixup_alpha": null,
+        "transfer_learning": {
+            "retrain_model": null,
+            "retrain_fraction": 1.0,
+            "reset": true
+        }
+    },
+    "default_model": {
+        "name": "Unet",
+        "dropout_rate": 0.25,
+        "bn_momentum": 0.2,
+        "depth": 4,
+        "is_2d": true,
+        "final_activation": "softmax",
+        "length_2D": [
+            512,
+            512
+        ],
+        "stride_2D": [
+            480,
+            480
+        ]
+    },
+    "uncertainty": {
+        "epistemic": false,
+        "aleatoric": false,
+        "n_it": 0
+    },
+    "postprocessing": {
+        "binarize_maxpooling": {}
+    },
+    "evaluation_parameters": {},
+    "transformation": {
+        "RandomAffine": {
+            "degrees": 5,
+            "scale": [
+                0.1,
+                0.1
+            ],
+            "translate": [
+                0.03,
+                0.03
+            ],
+            "applied_to": [
+                "im",
+                "gt"
+            ],
+            "dataset_type": [
+                "training"
+            ]
+        },
+        "ElasticTransform": {
+            "alpha_range": [
+                28.0,
+                30.0
+            ],
+            "sigma_range": [
+                3.5,
+                4.5
+            ],
+            "p": 0.1,
+            "applied_to": [
+                "im",
+                "gt"
+            ],
+            "dataset_type": [
+                "training"
+            ]
+        },
+        "NormalizeInstance": {
+            "applied_to": [
+                "im"
+            ]
+        }
+    },
+    "training_sha256": {
+        "sub-21151_sample-21151_chunk-9_desc-crop1_BF.tif": "c17cf082baa45e2e9c55b6e6183a9c17be5c7e383ba9812ec31790a92d2c36fe",
+        "sub-21151_sample-21151_chunk-9_desc-crop2_BF.tif": "9d5e4505a1540669ed3a41eef6f4b079aa9d1a9d643f6eb9cb8fe1c8de3cd4eb",
+        "sub-21151_sample-21151_chunk-9_desc-crop3_BF.tif": "f92f73bab38eeb912fe383bcd7ca384d3441a8b9fe6e672c475e46e9ac9cb237",
+        "sub-21151_sample-21151_chunk-9_desc-crop4_BF.tif": "fa1add16d8041fa8d7dd176b0375c33a445ee84761c38e31c8c7e389601c732f",
+        "sub-21133_sample-21133_chunk-4_desc-crop1_BF.tif": "a85af4b07c91a0ecff78af3af94686a84b0eadcd847d5e75dd0c0e0d39ec386e",
+        "sub-21133_sample-21133_chunk-4_desc-crop2_BF.tif": "77cfb192c24bda266d88603b94f6cd388c04499fcf63153da13d52b0e1b324ca",
+        "sub-17269_sample-17269_chunk-1_desc-crop1_BF.tif": "7ae3ad4153760837ff9cd519a19147011e20c1e6b3b2b44ad5ad266a0f72c69c",
+        "sub-17269_sample-17269_chunk-1_desc-crop3_BF.tif": "694e5b3d20ab15c76a5c26713fd3704f1b1ee3cadd03b62a2867dff4f5b422b3",
+        "sub-17269_sample-17269_chunk-1_desc-crop4_BF.tif": "63e9eb2c048c6760f9b3616369cc4099fe67a43ae4eac73299e5aeb9430df267"
+    }
+}

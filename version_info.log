@@ -1,0 +1,36 @@
+IVADOMED TOOLBOX
+----------------
+(git-master-177eda06aea738c2c4b8e1949b96e1a5a3049cd0)
+
+
+DATASET VERSION
+---------------
+The following BIDS dataset(s) were used for training.
+1. ../../wakehealth_cropping_pipeline_2/ - Dataset is not Annexed.
+
+
+SYSTEM INFO
+-------------
+OS: linux (Linux-5.4.0-81-generic-x86_64-with-glibc2.29)
+CPU cores: Available: 40
+
+
+
+
+CONFIG INPUTS
+-------------
+command: segment
+gpu_ids: [2]
+path_output: output/
+model_name: model_seg_human_axon-myelin_bf
+debugging: True
+log_file: log
+object_detection_params: {'object_detection_path': None, 'safety_factor': [1.0, 1.0, 1.0]}
+loader_parameters: {'path_data': ['../../wakehealth_cropping_pipeline_2/'], 'subject_selection': {'n': [], 'metadata': [], 'value': []}, 'target_suffix': ['_seg-axon-manual', '_seg-myelin-manual'], 'extensions': ['.png', '.tif'], 'roi_params': {'suffix': None, 'slice_filter_roi': None}, 'contrast_params': {'training_validation': ['BF'], 'testing': ['BF'], 'balance': {}}, 'slice_filter_params': {'filter_empty_mask': False, 'filter_empty_input': True}, 'slice_axis': 'axial', 'multichannel': False, 'soft_gt': False, 'is_input_dropout': False, 'bids_config': '../../config_bids.json'}
+split_dataset: {'fname_split': '../../datasplit.joblib', 'random_seed': 6, 'split_method': 'sample_id', 'data_testing': {'data_type': None, 'data_value': []}, 'balance': None, 'train_fraction': 0.7, 'test_fraction': 0.1}
+training_parameters: {'batch_size': 6, 'loss': {'name': 'MultiClassDiceLoss'}, 'training_time': {'num_epochs': 400, 'early_stopping_patience': 200, 'early_stopping_epsilon': 0.0001}, 'scheduler': {'initial_lr': 0.002, 'lr_scheduler': {'name': 'CyclicLR', 'base_lr': 1e-05, 'max_lr': 0.005}}, 'balance_samples': {'applied': False, 'type': 'gt'}, 'mixup_alpha': None, 'transfer_learning': {'retrain_model': None, 'retrain_fraction': 1.0, 'reset': True}}
+default_model: {'name': 'Unet', 'dropout_rate': 0.25, 'bn_momentum': 0.2, 'depth': 4, 'is_2d': True, 'final_activation': 'softmax', 'length_2D': [512, 512], 'stride_2D': [480, 480]}
+uncertainty: {'epistemic': False, 'aleatoric': False, 'n_it': 0}
+postprocessing: {'binarize_maxpooling': {}}
+evaluation_parameters: {}
+transformation: {'RandomAffine': {'degrees': 5, 'scale': [0.1, 0.1], 'translate': [0.03, 0.03], 'applied_to': ['im', 'gt'], 'dataset_type': ['training']}, 'ElasticTransform': {'alpha_range': [28.0, 30.0], 'sigma_range': [3.5, 4.5], 'p': 0.1, 'applied_to': ['im', 'gt'], 'dataset_type': ['training']}, 'NormalizeInstance': {'applied_to': ['im']}}
