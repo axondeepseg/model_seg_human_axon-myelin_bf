@@ -2,7 +2,7 @@
 ---
 ## Model overview
 
-This Bright-Field (BF) optical microscopy model works at a resolution of 0.1 micrometer per pixel and was trained on human tibial nerve data stained with Toluidine Blue.
+This Bright-Field (BF) optical microscopy model works at a resolution of 0.226 micrometer per pixel and was trained on human tibial nerve data stained with Toluidine Blue.
 
 ## Segment (ADS)
 To segment an image using this model, use the following command in an `axondeepseg` virtual environment:
