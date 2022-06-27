@@ -16,7 +16,7 @@ This model was trained and tested with [ivadomed](https://ivadomed.org/). We rec
 ### Clone this repository
 You will need the model's JSON configuration file named <FILENAME.json> located in this repo.
 ```
-git clone MODEL_REPO_URL
+git clone https://github.com/axondeepseg/model_seg_human_axon-myelin_bf
 ```
 
 ### Get the data
