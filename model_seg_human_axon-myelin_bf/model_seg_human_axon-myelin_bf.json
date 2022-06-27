@@ -124,6 +124,10 @@
     },
     "evaluation_parameters": {},
     "transformation": {
+        "Resample": {
+            "wspace": 0.000226,
+            "hspace": 0.000226
+        },
         "RandomAffine": {
             "degrees": 5,
             "scale": [
