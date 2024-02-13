@@ -1,3 +1,6 @@
+> [!TIP]
+> For an updated version of this model trained with `nnunetv2`, see [axondeepseg/default-wakehealth-model](https://github.com/axondeepseg/default-wakehealth-model)  
+> 
 # model_seg_human_axon-myelin_bf
 ---
 ## Model overview
